@@ -3,19 +3,20 @@
   <head>
     <meta charset="utf-8">
     <title>Proto avis de visite - accueil</title>
-
-
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/css/tempusdominus-bootstrap-4.min.css" />
-		
-		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>		
-		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment-with-locales.js"></script>
-		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/js/tempusdominus-bootstrap-4.min.js"></script>
-
-
+		<!-- DEBUT DEPENDANCES -->
+			<!-- début bloc CSS -->
+			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/css/tempusdominus-bootstrap-4.min.css" />
+			<!-- fin bloc CSS -->
+			<!-- début bloc JS -->
+			<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>		
+			<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment-with-locales.js"></script>
+			<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/js/tempusdominus-bootstrap-4.min.js"></script>
+			<!-- fin bloc JS -->
+		<!-- FIN DEPENDANCES -->
 
 		<script type="text/javascript">
 		function changeFormAction()
@@ -44,99 +45,108 @@
     <div class='container'>
 		<h1>Avis de visite - prototype</h1>
 		<p>Veuillez renseigner le formulaire pour émettre une demande d'avis de visite</p>
-		<br/>
-<form id="formDebut" class="needs-validation" novalidate>
-	<h3>Demandeur</h3>
-	<div class="form-row">
-		<div class="form-group col-md-2">
-			<label for="matriculeDemandeur">Matricule</label>
-			<input type="text" class="form-control" id="matriculeDemandeur" placeholder="Matricule demandeur" required>
-			<div class="invalid-tooltip">
-				Veuillez saisir votre matricule
+			<div class='row'>
+			<div class='col-sm-6 mb-5'>
+				<div class="progress">
+					<div class="progress-bar" role="progressbar" style="width: 33.3%;" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100">étape 1/3</div>
+				</div>
 			</div>
 		</div>
 	</div>
-	<div class="form-row">
-		<div class="form-group col-md-6">
-			<label for="NomDemandeur">Nom</label>
-			<input type="text" class="form-control" id="NomDemandeur" placeholder="Nom">
-		</div>
-		<div class="form-group col-md-6">
-			<label for="PrenomDemandeur">Prénom</label>
-			<input type="text" class="form-control" id="PrenomDemandeur" placeholder="Prénom">
-		</div>
-	</div>
-	<div class="form-row">
-		<div class="form-group col-md-2">
-			<label for="TelDemandeur">Téléphone</label>
-			<input type="text" class="form-control" id="TelDemandeur" placeholder="N° téléphone Interne">
-		</div>
-		<div class="form-group col-md-2">
-			<label for="GroupeDemandeur">Groupe</label>
-			<input type="text" class="form-control" id="GroupeDemandeur" placeholder="Groupe">
-		</div>
-		<div class="form-group col-md-8">
-			<label for="PortableDemandeur">Portable</label>
-			<input type="text" class="form-control" id="PortableDemandeur" placeholder="N° téléphone portable">
-		</div>
-	</div>
-	<h3>Visite</h3>
-	<div class="form-row">
-		<div class="form-group col-md-3">
-			<label for="ObjetDemande">Objet de la demande</label>
-			<select id="ObjetDemande" class="selectpicker  form-control" onchange="if (this.selectedIndex) changeFormAction();" required>
-				<option value="" selected>Choisir...</option>
-				<option value="reunion">Réunion</option>
-				<option value="intervention">Intervention</option>
-				<option value="groupe">Accueil groupe</option>
-			</select>
-			<div class="invalid-tooltip">
-				Veuillez choisir l'objet de la demande
+	<div class='container'>		
+		<div class='card'>		
+			<div class='card-body'>		
+				<form id="formDebut" class="needs-validation" novalidate>
+					<h3>Demandeur</h3>
+					<div class="form-row">
+						<div class="form-group col-md-3">
+							<label for="matriculeDemandeur">Matricule</label>
+							<input type="text" class="form-control" id="matriculeDemandeur" placeholder="Matricule demandeur" required>
+							<div class="invalid-tooltip">
+								Veuillez saisir votre matricule
+							</div>
+						</div>
+					</div>
+					<div class="form-row">
+						<div class="form-group col-md-6">
+							<label for="NomDemandeur">Nom</label>
+							<input type="text" class="form-control" id="NomDemandeur" placeholder="Nom">
+						</div>
+						<div class="form-group col-md-6">
+							<label for="PrenomDemandeur">Prénom</label>
+							<input type="text" class="form-control" id="PrenomDemandeur" placeholder="Prénom">
+						</div>
+					</div>
+					<div class="form-row">
+						<div class="form-group col-md-2">
+							<label for="TelDemandeur">Téléphone</label>
+							<input type="text" class="form-control" id="TelDemandeur" placeholder="N° téléphone Interne">
+						</div>
+						<div class="form-group col-md-2">
+							<label for="GroupeDemandeur">Groupe</label>
+							<input type="text" class="form-control" id="GroupeDemandeur" placeholder="Groupe">
+						</div>
+						<div class="form-group col-md-8">
+							<label for="PortableDemandeur">Portable</label>
+							<input type="text" class="form-control" id="PortableDemandeur" placeholder="N° téléphone portable">
+						</div>
+					</div>
+					<h3>Visite</h3>
+					<div class="form-row">
+						<div class="form-group col-md-3">
+							<label for="ObjetDemande">Objet de la demande</label>
+							<select id="ObjetDemande" class="selectpicker  form-control" onchange="if (this.selectedIndex) changeFormAction();" required>
+								<option value="" selected>Choisir...</option>
+								<option value="reunion">Réunion</option>
+								<option value="intervention">Intervention</option>
+								<option value="groupe">Accueil groupe</option>
+							</select>
+							<div class="invalid-tooltip">
+								Veuillez choisir l'objet de la demande
+							</div>
+						</div>
+						<div class="form-group col-md-3">
+							<label for="LieuDemande">Lieu de la visite</label>
+							<select id="LieuDemande" class="form-control">
+								<option selected>Choisir...</option>
+								<option>Bordeaux</option>
+								<option>Croix d'Hins</option>				
+							</select>
+						</div>
+						<div class="form-group col-md-3">
+							
+								<label for="DebutDemande">Début visite</label>
+								<div class="input-group date" id="datetimepicker1" data-target-input="nearest">
+									<input type="text" class="form-control datetimepicker-input" data-toggle="datetimepicker" data-target="#datetimepicker1" id="DebutDemande" required/>
+									<div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
+										<div class="input-group-text"><i class="fa fa-calendar"></i></div>
+									</div>
+									<div class="invalid-tooltip">
+									Saisie du début de visite obligatoire
+									</div>
+								</div>
+							
+						</div>
+						<div class="form-group col-md-3">
+						
+								<label for="FinDemande">Fin visite</label>
+								<div class="input-group date" id="datetimepicker2" data-target-input="nearest">
+									<input type="text" class="form-control datetimepicker-input" data-toggle="datetimepicker" data-target="#datetimepicker2" id="FinDemande" required/>
+									<div class="input-group-append" data-target="#datetimepicker2" data-toggle="datetimepicker">
+										<div class="input-group-text"><i class="fa fa-calendar"></i></div>
+									</div>
+									<div class="invalid-tooltip">
+									Saisie de la fin de visite obligatoire
+									</div>
+								</div>
+								
+						</div>																		
+					</div>
+					
+				  <button type="submit" class="btn btn-primary">Poursuivre la demande</button>
+				</form>
 			</div>
 		</div>
-		<div class="form-group col-md-3">
-			<label for="LieuDemande">Lieu de la visite</label>
-			<select id="LieuDemande" class="form-control">
-				<option selected>Choisir...</option>
-				<option>Bordeaux</option>
-				<option>Croix d'Hins</option>				
-			</select>
-		</div>
-		<div class="form-group col-md-3">
-			
-				<label for="DebutDemande">Début visite</label>
-				<div class="input-group date" id="datetimepicker1" data-target-input="nearest">
-                    <input type="text" class="form-control datetimepicker-input" data-toggle="datetimepicker" data-target="#datetimepicker1" id="DebutDemande" required/>
-                    <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
-                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                    </div>
-					<div class="invalid-tooltip">
-					Saisie du début de visite obligatoire
-					</div>
-                </div>
-			
-		</div>
-		<div class="form-group col-md-3">
-		
-				<label for="FinDemande">Fin visite</label>
-				<div class="input-group date" id="datetimepicker2" data-target-input="nearest">
-                    <input type="text" class="form-control datetimepicker-input" data-toggle="datetimepicker" data-target="#datetimepicker2" id="FinDemande" required/>
-                    <div class="input-group-append" data-target="#datetimepicker2" data-toggle="datetimepicker">
-                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                    </div>
-					<div class="invalid-tooltip">
-					Saisie de la fin de visite obligatoire
-					</div>
-                </div>
-				
-		</div>
-		
-		
-		
-	</div>
-	
-  <button type="submit" class="btn btn-primary">Poursuivre la demande</button>
-</form>
 	</div>
 	 <script>
 	// Example starter JavaScript for disabling form submissions if there are invalid fields
@@ -157,6 +167,7 @@
 		});
 	  }, false);
 	})();
+	// fonctions pour input calendriers
 	$(function () {
 		$('#datetimepicker1').datetimepicker({locale: 'fr', stepping: 30, disabledTimeIntervals: [[moment({ h: 0 }), moment({ h: 6 })], [moment({ h: 20, m: 1 }), moment({ h: 24 })]]});
 	});
@@ -176,11 +187,12 @@
 		
 	});
 	$("#datetimepicker1").on("hide.datetimepicker", function (e) {    
-	console.log("datetimepicker1 hide fired")    
 		if($('#datetimepicker2').data('date') === undefined){
 			$('#datetimepicker2').datetimepicker('date',e.date);
 		}
 	});
+	
+	
 
 	
 	</script>

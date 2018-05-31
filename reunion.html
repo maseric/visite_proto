@@ -4,25 +4,196 @@
     <meta charset="utf-8">
     <title>Proto avis de visite - Réunion</title>
 
-
-
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+		<!-- DEBUT DEPENDANCES -->
+			<!-- début bloc CSS -->
+			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/css/tempusdominus-bootstrap-4.min.css" />
+			<!-- fin bloc CSS -->
+			<!-- début bloc JS -->
+			<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>		
+			<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment-with-locales.js"></script>
+			<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/js/tempusdominus-bootstrap-4.min.js"></script>
+			<!-- fin bloc JS -->
+		<!-- FIN DEPENDANCES -->
 
 		
   </head>
 
   <body >
-    <div class='container'>
+	<div class='container'>
 		<h1>Avis de visite - Réunion - prototype</h1>
 		<div class="alert alert-warning" role="alert">
 		En cours d'implémentation
 		</div>
-		<br/>
-		<a href="/visite_proto">retour</a>
+		<div class='row'>
+			<div class='col-md-12 mb-3'>
+			Veuillez renseigner le formulaire pour émettre une demande d'avis de visite pour une réunion
+			</div>
+		</div>
+		<div class='row'>
+			<div class='col-sm-12 mb-4'>
+				<div class="progress">
+					<div class="progress-bar" role="progressbar" style="width: 66.6%;" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100">étape 2/3</div>
+				</div>
+			</div>
+		</div>
+		<!-- 
+		<div class="btn-group" role="group" aria-label="Basic example">
+		  <button type="button" class="btn btn-primary">Left</button>
+		  <button type="button" class="btn btn-primary">Middle</button>
+		  <button type="button" class="btn btn-primary">Right</button>
+		</div>
+		-->
+		<div class="row justify-content-between">
+			<div class="col-sm-4 mb-3">
+				<a class="btn btn-primary" href="/visite_proto" role="button">Précédent</a>
+			</div>
+			<div class="col-sm-4 mb-3">
+				<a class="fa fa-user-plus fa-2x" href="" data-toggle="tooltip" data-placement="bottom" title="Ajouter visiteur"></a>
+			</div>
+			<div class="col-sm-4 mb-3">
+				<a class="btn btn-primary" href="/visite_proto" role="button">Suivant</a>
+			</div>
+		</div>
 	</div>
- 
+	<div class='container'>			
+		<form id="formDebut" class="needs-validation" novalidate>
+			<div class='card mb-3'>		
+				<div class="card-header">				
+					<nav class="navbar navbar-light bg-light">
+						<h3 id="titre-v1">Informations visiteur</h3>						
+						<button type="button" id="button-v1" class="btn btn-light" data-toggle="collapse" data-target="#collapse-v1" style="color: #007bff;" aria-label="Left Align">
+							<span class="fa fa-chevron-circle-up fa-2x" aria-hidden="true"></span>
+						</button>
+					</nav>				
+				</div>
+				<div class="collapse show" id="collapse-v1">
+				<div class='card-body'>	
+					
+					<h4>Identité</h4>
+					<div class="form-row">
+						<div class="form-group col-md-6">
+							<label for="NomVisiteur">Nom</label>
+							<input type="text" class="form-control" id="NomVisiteur" placeholder="Nom">
+						</div>
+						<div class="form-group col-md-6">
+							<label for="PrenomVisiteur">Prénom</label>
+							<input type="text" class="form-control" id="PrenomVisiteur" placeholder="Prénom">
+						</div>
+					</div>
+					<div class="form-row">
+						<div class="form-group col-md-3">
+							<label for="naissVisiteur">Date de naissance</label>
+							<div class="input-group date" id="datetimepicker1" data-target-input="nearest">
+								<input type="text" class="form-control datetimepicker-input" data-toggle="datetimepicker" data-target="#datetimepicker1" id="naissVisiteur" required/>
+								<div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
+									<div class="input-group-text"><i class="fa fa-calendar"></i></div>
+								</div>
+								<div class="invalid-tooltip">
+								Saisie obligatoire
+								</div>
+							</div>
+						</div>
+						<div class="form-group col-md-3">					
+								<label for="FinDemande">Nationalité</label>
+								<select id="LieuDemande" class="form-control">
+									<option selected>Choisir...</option>
+									<option value=1>Française</option>
+									<option value=2>Etrangère</option>
+								</select>
+						</div>						
+					</div>
+					<h4>Entreprise/Organisme</h4>
+					<div class="form-row">
+						<div class="form-group col-md-12">
+							<label for="RaisonSociale">Raison sociale</label>
+							<input type="text" class="form-control" id="RaisonSociale" placeholder="Raison Sociale">
+						</div>
+					</div>
+					<div class="form-row">
+						<div class="form-group col-md-6">
+							<label for="VilleSociete">Ville</label>
+							<input type="text" class="form-control" id="VilleSociete" placeholder="Ville">
+						</div>
+						<div class="form-group col-md-2">
+							<label for="CPSociete">Code postal</label>
+							<input type="text" class="form-control" id="CPSociete" placeholder="Code postal">
+						</div>
+						<div class="form-group col-md-4">
+							<label for="PaysSociete">Pays</label>
+							<select id="LieuDemande" class="form-control">
+								<option value="" selected>Choisir...</option>
+								<option value=1>France</option>
+								<option value=2>Italie</option>
+								<option value=2>...</option>
+							</select>
+						</div>
+					</div>					
+					<div class="form-row">
+						<div class="form-group col-md-6" >
+							<label for="AdresseSociete">Adresse</label>
+							<textarea class="form-control" aria-label="Adresse entreprise" rows=3></textarea>
+						</div>
+					</div>
+					
+ 				</div> <!-- card body -->
+				</div><!-- collapse -->
+			</div> <!-- card -->
+			<button type="submit" class="btn btn-primary mb-3">Poursuivre la demande</button>
+		</form>
+	</div>
+		 <script>
+	// Example starter JavaScript for disabling form submissions if there are invalid fields
+	(function() {
+	  'use strict';
+	  window.addEventListener('load', function() {
+		// Fetch all the forms we want to apply custom Bootstrap validation styles to
+		var forms = document.getElementsByClassName('needs-validation');
+		// Loop over them and prevent submission
+		var validation = Array.prototype.filter.call(forms, function(form) {
+		  form.addEventListener('submit', function(event) {
+			if (form.checkValidity() === false) {
+			  event.preventDefault();
+			  event.stopPropagation();
+			}
+			form.classList.add('was-validated');
+		  }, false);
+		});
+	  }, false);
+	})();
+	// fonctions pour input calendriers
+	$(function () {
+		$('#datetimepicker1').datetimepicker({locale: 'fr', format: 'L', viewMode: 'years'});
+	});
+	// fonction activation des tooltips partout
+	$(function () {
+		$('[data-toggle="tooltip"]').tooltip()
+	});
+	$(function () {
+		$('#NomVisiteur').on('change', function(e){
+			$('#titre-v1').html("Informations visiteur "+$('#NomVisiteur').val()+" "+$('#PrenomVisiteur').val());
+		});
+		$('#PrenomVisiteur').on('change', function(e){
+			$('#titre-v1').html("Informations visiteur "+$('#NomVisiteur').val()+" "+$('#PrenomVisiteur').val());
+		});
+		
+		$('#button-v1').on('click', function(e){
+			console.log('click');
+			$('#button-v1').children().toggleClass('fa-chevron-circle-up');
+			$('#button-v1').children().toggleClass('fa-chevron-circle-down');
+			/*if($('#collapse-v1').children().hasClass('fa-chevron-circle-up'))
+			{
+				
+			}*/
+		});
+		
+	
+		
+	
+	});
+	</script>
   </body>
 </html>
