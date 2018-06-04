@@ -15,8 +15,7 @@
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>		
 			<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment-with-locales.js"></script>
-			<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/js/tempusdominus-bootstrap-4.min.js"></script>
-			<script type="text/javascript" src="template.html.js"></script>
+			<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/js/tempusdominus-bootstrap-4.min.js"></script>		
 			<!-- fin bloc JS -->
 		<!-- FIN DEPENDANCES -->
 
@@ -27,7 +26,7 @@
 	<div class='container'>
 		<h1>Avis de visite - Réunion - prototype</h1>
 		<div class="alert alert-warning" role="alert">
-		En cours d'implémentation
+		En cours d'impléntation
 		</div>
 		<div class='row'>
 			<div class='col-md-12 mb-3'>
@@ -41,19 +40,12 @@
 				</div>
 			</div>
 		</div>
-		<!-- 
-		<div class="btn-group" role="group" aria-label="Basic example">
-		  <button type="button" class="btn btn-primary">Left</button>
-		  <button type="button" class="btn btn-primary">Middle</button>
-		  <button type="button" class="btn btn-primary">Right</button>
-		</div>
-		-->
 		<div class="row justify-content-between">
 			<div class="col-sm-4 mb-3">
 				<a class="btn btn-primary" href="/visite_proto" role="button">Précédent</a>
 			</div>
 			<div class="col-sm-4 mb-3">
-				<a class="fa fa-user-plus fa-2x"  data-toggle="tooltip" data-placement="bottom" onclick="addVisiteur();" title="Ajouter visiteur"></a>
+				<a class="fa fa-user-plus fa-2x"  data-toggle="tooltip" data-placement="bottom"  title="Ajouter visiteur"></a>
 			</div>
 			<div class="col-sm-4 mb-3">
 				<a class="btn btn-primary" href="/visite_proto" role="button">Suivant</a>
@@ -61,8 +53,9 @@
 		</div>
 	</div>
 	<div class='container'>			
-		<form id="formDebut" class="needs-validation" novalidate>	
-			<div id="visiteurs"></div>
+		<form id="formDebut" class="needs-validation" novalidate>
+		<p><?php include "template.html"; ?></p>
+					<div id="visiteurs"></div>
 			<button type="submit" class="btn btn-primary mb-3">Poursuivre la demande</button>
 		</form>
 	</div>
@@ -91,18 +84,31 @@
 	$(function () {
 		$('[data-toggle="tooltip"]').tooltip();
 	});
+	
+	//--------- fonctions pour form visiteur v1 ---------------------------------------------------------------------------------
+	$(function () {
+		// fonctions pour input calendriers	
+		$('#datetimepicker-v1').datetimepicker({locale: 'fr', format: 'L', viewMode: 'years'});
+		
+		// affichage nom prénom visteur dans titre du bloc card
+		$('#NomVisiteur-v1').on('change', function(e){
+			$('#titre-v1').html("Informations visiteur "+$('#NomVisiteur-v1').val()+" "+$('#PrenomVisiteur-v1').val());
+		});
+		$('#PrenomVisiteur-v1').on('change', function(e){
+			$('#titre-v1').html("Informations visiteur "+$('#NomVisiteur-v1').val()+" "+$('#PrenomVisiteur-v1').val());
+		});
+		
+		// bouton collapse/expand
+		$('#button-v1').on('click', function(e){
+			console.log('click-v1');
+			$('#button-v1').children().toggleClass('fa-chevron-circle-up');
+			$('#button-v1').children().toggleClass('fa-chevron-circle-down');
+		});
 
-	function addVisiteur()	{
-		i++;
-		console.log("ajout visiteur "+i);
-		$('#visiteurs').append(template(i));
-	}
-	
-	
-	
-	// init
-	i=0;
-	addVisiteur();
+	});
+	//--------------------------------------------------------------------------------------------------------------------------
+
+
 	
 	
 	
