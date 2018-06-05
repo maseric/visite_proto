@@ -4,6 +4,9 @@
 	<div class='card-header'>
 		<nav class='navbar navbar-light bg-light'>
 			<h3 id='titre-v1'>Informations visiteur</h3>
+			<button type='button' id='button-supp-v1' class='btn btn-light' data-toggle='tooltip' data-placement='bottom'  title='Supprimer visiteur' style='color: #007bff;' aria-label='Left Align'>
+				<span class='fas fa-user-minus fa-2x' aria-hidden='true'></span>
+			</button>			
 			<button type='button' id='button-v1' class='btn btn-light' data-toggle='collapse' data-target='#collapse-v1' style='color: #007bff;' aria-label='Left Align'>
 				<span class='fa fa-chevron-circle-up fa-2x' aria-hidden='true'></span>
 			</button>
@@ -37,50 +40,50 @@
 				</div>
 			</div>
 			<div class='form-group col-md-3'>
-					<label for='FinDemande'>Nationalité</label>
-					<select id='LieuDemande' class='form-control'>
+					<label for='natioVisiteur-v1'>Nationalité</label>
+					<select id='natioVisiteur-v1' class='form-control'>
 						<option selected>Choisir...</option>
-						<option value=1>Française</option>
-						<option value=2>Etrangère</option>
+						<option value='Française'>Française</option>
+						<option value='Etrangère'>Etrangère</option>
 					</select>
 			</div>
 		</div>
 		<h4>Entreprise/Organisme</h4>
 		<div class='form-row'>
 			<div class='form-group col-md-12'>
-				<label for='RaisonSociale'>Raison sociale</label>
-				<input type='text' class='form-control' id='RaisonSociale' placeholder='Raison Sociale'>
+				<label for='RaisonSociale-v1'>Raison sociale</label>
+				<input type='text' class='form-control' id='RaisonSociale-v1' placeholder='Raison Sociale'>
 			</div>
 		</div>
 		<div class='form-row'>
 			<div class='form-group col-md-6'>
-				<label for='VilleSociete'>Ville</label>
-				<input type='text' class='form-control' id='VilleSociete' placeholder='Ville'>
+				<label for='VilleSociete-v1'>Ville</label>
+				<input type='text' class='form-control' id='VilleSociete-v1' placeholder='Ville'>
 			</div>
 			<div class='form-group col-md-2'>
-				<label for='CPSociete'>Code postal</label>
-				<input type='text' class='form-control' id='CPSociete' placeholder='Code postal'>
+				<label for='CPSociete-v1'>Code postal</label>
+				<input type='text' class='form-control' id='CPSociete-v1' placeholder='Code postal'>
 			</div>
 			<div class='form-group col-md-4'>
-				<label for='PaysSociete'>Pays</label>
-				<select id='LieuDemande' class='form-control'>
+				<label for='PaysSociete-v1'>Pays</label>
+				<select id='PaysSociete-v1' class='form-control'>
 					<option value='' selected>Choisir...</option>
-					<option value=1>France</option>
-					<option value=2>Italie</option>
-					<option value=2>...</option>
+					<option value='France'>France</option>
+					<option value='Italie'>Italie</option>
+					<option value='...'>...</option>
 				</select>
 			</div>
 		</div>
 		<div class='form-row'>
 			<div class='form-group col-md-6' >
-				<label for='AdresseSociete'>Adresse</label>
-				<textarea class='form-control' aria-label='Adresse entreprise' rows=3></textarea>
+				<label for='AdresseSociete-v1'>Adresse</label>
+				<textarea id='AdresseSociete-v1' class='form-control' aria-label='Adresse entreprise' rows=3></textarea>
 			</div>
 		</div>
 		<div class='form-row'>
 			<div class='custom-file'>
-				<input type='file' class='custom-file-input' id='validatedCustomFile' lang='fr'>
-				<label class='custom-file-label' for='validatedCustomFile'>Pièce jointe...</label>
+				<input type='file' class='custom-file-input' id='validatedCustomFile-v1' lang='fr'>
+				<label class='custom-file-label' for='validatedCustomFile-v1'>Pièce jointe...</label>
 		  </div>
 		</div>
 	</div> <!-- card body -->
@@ -101,8 +104,7 @@ $(function () {
 	});
 	
 	/* bouton collapse/expand*/
-	$('#button-v1').on('click', function(e){
-		console.log('click-v1');
+	$('#button-v1').on('click', function(e){		
 		$('#button-v1').children().toggleClass('fa-chevron-circle-up');
 		$('#button-v1').children().toggleClass('fa-chevron-circle-down');
 	});

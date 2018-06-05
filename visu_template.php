@@ -6,7 +6,7 @@
 
 		<!-- DEBUT DEPENDANCES -->
 			<!-- début bloc CSS -->
-			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+			<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/css/tempusdominus-bootstrap-4.min.css" />
 			<!-- fin bloc CSS -->
@@ -26,7 +26,7 @@
 	<div class='container'>
 		<h1>Avis de visite - Réunion - prototype</h1>
 		<div class="alert alert-warning" role="alert">
-		En cours d'impléntation
+		En cours d'impléntation -- ceci n'est que le visualisateur de template :-)
 		</div>
 		<div class='row'>
 			<div class='col-md-12 mb-3'>
@@ -85,29 +85,6 @@
 		$('[data-toggle="tooltip"]').tooltip();
 	});
 	
-	//--------- fonctions pour form visiteur v1 ---------------------------------------------------------------------------------
-	$(function () {
-		// fonctions pour input calendriers	
-		$('#datetimepicker-v1').datetimepicker({locale: 'fr', format: 'L', viewMode: 'years'});
-		
-		// affichage nom prénom visteur dans titre du bloc card
-		$('#NomVisiteur-v1').on('change', function(e){
-			$('#titre-v1').html("Informations visiteur "+$('#NomVisiteur-v1').val()+" "+$('#PrenomVisiteur-v1').val());
-		});
-		$('#PrenomVisiteur-v1').on('change', function(e){
-			$('#titre-v1').html("Informations visiteur "+$('#NomVisiteur-v1').val()+" "+$('#PrenomVisiteur-v1').val());
-		});
-		
-		// bouton collapse/expand
-		$('#button-v1').on('click', function(e){
-			console.log('click-v1');
-			$('#button-v1').children().toggleClass('fa-chevron-circle-up');
-			$('#button-v1').children().toggleClass('fa-chevron-circle-down');
-		});
-
-	});
-	//--------------------------------------------------------------------------------------------------------------------------
-
 
 	
 	

@@ -6,12 +6,12 @@
 
 		<!-- DEBUT DEPENDANCES -->
 			<!-- début bloc CSS -->
-			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+			<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/css/tempusdominus-bootstrap-4.min.css" />
 			<!-- fin bloc CSS -->
 			<!-- début bloc JS -->
-			<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+			<script src="https://code.jquery.com/jquery-3.2.1.min.js"  crossorigin="anonymous"></script>
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>		
 			<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment-with-locales.js"></script>
@@ -27,7 +27,14 @@
 	<div class='container'>
 		<h1>Avis de visite - Réunion - prototype</h1>
 		<div class="alert alert-warning" role="alert">
-		En cours d'implémentation
+		En cours d'implémentation<br>
+		<u>TODO :</u><br>
+		- rendre titre visiteur cliquable pour le expand/collapse<br>
+		- bouton suppression visiteur (au niveau du titre de chaque visiteur)<br>
+		- indiquer nombre de visiteurs en haut de page<br>
+		- gestion des PJ<br>
+		<u>FIXME</u><br>
+		- au chargement le titre ne se met pas à jour<br>
 		</div>
 		<div class='row'>
 			<div class='col-md-12 mb-3'>
@@ -41,22 +48,24 @@
 				</div>
 			</div>
 		</div>
-		<!-- 
-		<div class="btn-group" role="group" aria-label="Basic example">
-		  <button type="button" class="btn btn-primary">Left</button>
-		  <button type="button" class="btn btn-primary">Middle</button>
-		  <button type="button" class="btn btn-primary">Right</button>
-		</div>
-		-->
 		<div class="row justify-content-between">
 			<div class="col-sm-4 mb-3">
 				<a class="btn btn-primary" href="/visite_proto" role="button">Précédent</a>
 			</div>
 			<div class="col-sm-4 mb-3">
-				<a class="fa fa-user-plus fa-2x"  data-toggle="tooltip" data-placement="bottom" onclick="addVisiteur();" title="Ajouter visiteur"></a>
+				<!-- <a class="fa fa-user-plus fa-2x"  data-toggle="tooltip" data-placement="bottom" onclick="addVisiteur();" title="Ajouter visiteur"></a> -->
+				<button type='button' id='button-addVis' data-toggle="tooltip" data-placement="bottom" class='btn btn-light' style='color: #007bff;' aria-label='Left Align' onclick="addVisiteur();" title="Ajouter visiteur">
+					<span class='fa fa-user-plus fa-2x' aria-hidden='true'></span>
+				</button>
+				
+				
+				<p id="nbVisiteurs"></p>
 			</div>
 			<div class="col-sm-4 mb-3">
-				<a class="btn btn-primary" href="/visite_proto" role="button">Suivant</a>
+				<!-- <a class="btn btn-primary" href="/visite_proto" role="button">Suivant</a> -->
+				
+				<button type='button' id='button-suivant' class='btn btn-primary' aria-label='Left Align' onclick="genereJSONobj();" >Suivant</button>
+				
 			</div>
 		</div>
 	</div>
@@ -91,26 +100,131 @@
 	$(function () {
 		$('[data-toggle="tooltip"]').tooltip();
 	});
+	
+	// fonction pour recuperer les parametres get dans l'URL
+	var getUrlParameter = function getUrlParameter(sParam) {
+		var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+        sURLVariables = sPageURL.split('&'),
+        sParameterName,
+        i;
 
+		for (i = 0; i < sURLVariables.length; i++) {
+			sParameterName = sURLVariables[i].split('=');
+
+			if (sParameterName[0] === sParam) {
+				return sParameterName[1] === undefined ? true : sParameterName[1];
+			}
+		}
+	};
+	
+	
 	function addVisiteur()	{
-		i++;
-		console.log("ajout visiteur "+i);
-		$('#visiteurs').append(template(i));
+		NbVisiteurs++;
+		console.log("Ajout visiteur " + NbVisiteurs);
+		$('#visiteurs').append(template(NbVisiteurs));
+		$('#nbVisiteurs').html('Nombre de visiteurs : ' + NbVisiteurs);
+		$('[data-toggle="tooltip"]').tooltip();
 	}
 	
 	
 	
-	// init
-	i=0;
-	addVisiteur();
+	//-------------------------------- init --------------------------------
+	NbVisiteurs=0;
+	visiteurs=[];
 	
 	
+	reuid=getUrlParameter('reuid');
+	if(reuid === undefined)
+	{
+		console.log('Nouveau formulaire. Ajout du premier visiteur');
+		addVisiteur();
+	}
+	else
+	{
+		console.log('Recuperation formulaire deja saisi');
+		url='http://127.0.0.1/visite_proto/mock_api.php?reuid='+reuid;
+		$.ajax({
+		  url: 'http://127.0.0.1/visite_proto/mock_api.php?reuid='+reuid,
+		  beforeSend: function( xhr ) {
+			xhr.overrideMimeType( "application/json; charset=utf-8" );
+		  }
+		})
+		  .done(function( data ) {
+			if ( console && console.log ) {
+			  console.log( "Donnees recuperees :", data );
+			  visiteurs=data;
+			  populeForm(visiteurs);
+			}
+		  });
+	}
 	
+	// fonction de serialisation JSON du formulaire 
+	function genereJSONobj(){
 	
+		//reinit var globale visiteurs
+		visiteurs=[];
+		for(var i=1;i<=NbVisiteurs;i++)
+		{
+			if($('#NomVisiteur-'+i).val()!== "")
+			{
+				console.log($('#NomVisiteur-'+i).val());
+			}
+			console.log('#NomVisiteur-'+i);
+			/*
+			console.log($('#NomVisiteur-'+i).val());
+			console.log($('#PrenomVisiteur-'+i).val());
+			console.log($('#naissVisiteur-'+i).val());
+			console.log($('#natioVisiteur-'+i).val());
+			console.log($('#RaisonSociale-'+i).val());
+			console.log($('#VilleSociete-'+i).val());
+			console.log($('#CPSociete-'+i).val());
+			console.log($('#PaysSociete-'+i).val());
+			console.log($('#AdresseSociete-'+i).val());
+			console.log($('#validatedCustomFile-'+i).val());
+			*/
+			
+			visiteur={
+				id: i,
+				nom: $('#NomVisiteur-'+i).val(),
+				prenom: $('#PrenomVisiteur-'+i).val(),
+				dateNaiss: $('#naissVisiteur-'+i).val(),
+				nationalite: $('#natioVisiteur-'+i).val(),
+				entreprise: {
+					raisonSociale: $('#RaisonSociale-'+i).val(),
+					ville: $('#VilleSociete-'+i).val(),
+					CP: $('#CPSociete-'+i).val(),
+					pays: $('#PaysSociete-'+i).val(),
+					adresse: $('#AdresseSociete-'+i).val(),
+					PJ: $('#validatedCustomFile-'+i).val()
+					}
+				};
+				
+				visiteurs.push(visiteur);
+				//console.log(visiteur);
+		}
+		
+		console.log(visiteurs);
+	}
 	
-	
-	
-	
+	// fonction pour generer un/des formulaire(s) à partir d'un objet JSON
+	function populeForm(arrayObj)
+	{
+		arrayObj.forEach(function(visiteur){
+			console.log('Ajout visiteur ' + visiteur.nom);
+			addVisiteur();
+			$('#NomVisiteur-' + NbVisiteurs).val(visiteur.nom);
+			$('#PrenomVisiteur-' + NbVisiteurs).val(visiteur.prenom);			
+			$('#naissVisiteur-' + NbVisiteurs).val(visiteur.dateNaiss);
+			$('#natioVisiteur-' + NbVisiteurs).val(visiteur.nationalite);
+			$('#RaisonSociale-' + NbVisiteurs).val(visiteur.entreprise.raisonSociale);
+			$('#VilleSociete-' + NbVisiteurs).val(visiteur.entreprise.ville);
+			$('#CPSociete-' + NbVisiteurs).val(visiteur.entreprise.CP);
+			$('#PaysSociete-' + NbVisiteurs).val(visiteur.entreprise.pays);
+			$('#AdresseSociete-' + NbVisiteurs).val(visiteur.entreprise.adresse);
+			$('#validatedCustomFile-' + NbVisiteurs).val(visiteur.entreprise.PJ);
+			$('#PrenomVisiteur-' + NbVisiteurs).change();
+		});
+	}
 	</script>
   </body>
 </html>
